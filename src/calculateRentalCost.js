@@ -10,7 +10,11 @@ function calculateRentalCost(days) {
   const shortTerm = 3;
   const shortTermDiscount = 20;
 
-  let basePrice = days * priceOneDay;
+  if (typeof days !== 'number' || days <= 0) {
+    return 'Please enter correct data';
+  }
+
+  const basePrice = days * priceOneDay;
 
   if (days >= longTerm) {
     return basePrice - longTermDiscount;
